@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "bundle": "webpack",
-    "lint": "eslint -c .eslintrc ."
+    "lint": "eslint -c .eslintrc.js ."
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -22,13 +22,13 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "react-hot-loader": "next",
     "style-loader": "^0.17.0",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "next"
   }
 }
