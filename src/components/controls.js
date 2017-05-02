@@ -4,25 +4,14 @@ import ProgressBar from './progress_bar';
 import * as Media from '../helpers/media_api';
 
 class Controls extends React.Component {
-  state = {
-    videoNode: '',
-  };
-
-  componentDidMount() {
-    const el = document.getElementById(this.props.playerId);
-    this.setState({
-      videoNode: el,
-    });
-  };
-
   handlePlayClick = () => {
     Media.play(this.state.videoNode);
-    this.playbackInterval = this.setPositionInterval();
+    // this.playbackInterval = this.setPositionInterval();
   };
 
   handlePauseClick = () => {
     Media.pause(this.state.videoNode);
-    this.clearPositionInverval(this.playbackInterval);
+    // this.clearPositionInverval(this.playbackInterval);
   }
 
   handleSeek = (timer) => {
@@ -40,6 +29,13 @@ class Controls extends React.Component {
   clearPositionInverval = (inervalId) => {
     clearInterval(this.playbackInterval);
   }
+
+  componentDidMount() {
+    const el = document.getElementById(this.props.playerId);
+    this.setState({
+      videoNode: el,
+    });
+  };
 
   render() {
     return (

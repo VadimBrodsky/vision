@@ -6,6 +6,7 @@ class ProgressBar extends React.Component {
 
   handlePositionChange = (e) => {
     const time = e.target.value;
+    this.setState({ position: time });
     this.props.onChange(time);
   }
 
@@ -16,6 +17,7 @@ class ProgressBar extends React.Component {
         min="0"
         max="100"
         step="1"
+        value={this.state.position}
         onChange={this.handlePositionChange}
         className={styles.progress_bar}
       />
