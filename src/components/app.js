@@ -3,10 +3,12 @@ import styles from './app.css';
 
 import Player from './player';
 
+const source = 'sample.mp4';
+
 const App = () => (
   <div className={styles.app}>
     <h2>Hello, World</h2>
-    <Player />
+    <Player source={source} />
   </div>
 );
 
