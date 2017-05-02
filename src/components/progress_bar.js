@@ -15,7 +15,7 @@ class ProgressBar extends React.Component {
       <input
         type="range"
         min="0"
-        max="100"
+        max={this.props.duration}
         step="1"
         value={this.state.position}
         onChange={this.handlePositionChange}

@@ -44,7 +44,11 @@ class Controls extends React.Component {
           onPlay={this.handlePlayClick}
           onPause={this.handlePauseClick}
         />
-        <ProgressBar onChange={this.handleSeek} />
+        <ProgressBar
+          onChange={this.handleSeek}
+          duration={this.props.duration}
+          position={this.props.position}
+        />
       </div>
     );
   };

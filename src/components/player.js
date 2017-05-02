@@ -2,8 +2,6 @@ import React from 'react';
 import Media from './media';
 
 class Player extends React.Component {
-
-
   render() {
     return (
       <video

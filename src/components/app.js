@@ -10,6 +10,8 @@ const settings = {
 };
 
 class App extends React.Component {
+  state = {};
+
   handleMetadata = e => {
     this.setState({
       duration: e.target.duration
@@ -32,7 +34,11 @@ class App extends React.Component {
           onMetadata={this.handleMetadata}
           onTime={this.handleTimeUpdate}
         />
-        <Controls playerId={settings.id} />
+        <Controls
+          playerId={settings.id}
+          duration={this.state.duration}
+          position={this.state.position}
+        />
       </div>
     );
   }
