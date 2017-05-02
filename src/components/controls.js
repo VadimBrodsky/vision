@@ -6,14 +6,14 @@ import * as Media from '../helpers/media_api';
 class Controls extends React.Component {
   state = {
     videoNode: '',
-    playbackPosition: 0,
   };
 
   componentDidMount() {
+    const el = document.getElementById(this.props.playerId);
     this.setState({
-      videoNode: document.getElementById(this.props.playerId)
+      videoNode: el,
     });
-  }
+  };
 
   handlePlayClick = () => {
     Media.play(this.state.videoNode);
@@ -23,6 +23,11 @@ class Controls extends React.Component {
   handlePauseClick = () => {
     Media.pause(this.state.videoNode);
     this.clearPositionInverval(this.playbackInterval);
+  }
+
+  handleSeek = (timer) => {
+    console.log(timer);
+    Media.currentTime(this.state.videoNode, timer)
   }
 
   setPositionInterval = () => {
@@ -43,7 +48,7 @@ class Controls extends React.Component {
           onPlay={this.handlePlayClick}
           onPause={this.handlePauseClick}
         />
-        <ProgressBar position={20} />
+        <ProgressBar onChange={this.handleSeek} />
       </div>
     );
   };

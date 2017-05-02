@@ -2,6 +2,12 @@ import React from 'react';
 
 class ProgressBar extends React.Component {
   state = { position: '0' };
+
+  handlePositionChange = (e) => {
+    const time = e.target.value;
+    this.props.onChange(time);
+  }
+
   render() {
     return (
       <input
@@ -9,7 +15,7 @@ class ProgressBar extends React.Component {
         min="0"
         max="100"
         step="1"
-        value={this.state.position}
+        onChange={this.handlePositionChange}
       />
     );
   }

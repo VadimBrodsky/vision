@@ -15,8 +15,11 @@ const currentTime = (media, time) => {
   return media.currentTime;
 };
 
+const duration = media => media.duration;
+
 export {
   play,
   pause,
   currentTime,
+  duration,
 };
