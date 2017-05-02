@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './progress_bar.css';
 
 class ProgressBar extends React.Component {
   state = { position: '0' };
@@ -16,6 +17,7 @@ class ProgressBar extends React.Component {
         max="100"
         step="1"
         onChange={this.handlePositionChange}
+        className={styles.progress_bar}
       />
     );
   }
