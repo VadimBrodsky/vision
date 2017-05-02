@@ -1,9 +1,12 @@
 import React from 'react';
-import ButtonPlay from './buttonPlay';
+import ButtonPlay from './button_play';
+import ProgressBar from './progress_bar';
+import * as Media from '../helpers/media_api';
 
 class Controls extends React.Component {
   state = {
     videoNode: '',
+    playbackPosition: 0,
   };
 
   componentDidMount() {
@@ -13,30 +16,34 @@ class Controls extends React.Component {
   }
 
   handlePlayClick = () => {
-    this.mediaPlay(this.state.videoNode);
+    Media.play(this.state.videoNode);
+    this.playbackInterval = this.setPositionInterval();
   };
 
   handlePauseClick = () => {
-    this.mediaPause(this.state.videoNode);
+    Media.pause(this.state.videoNode);
+    this.clearPositionInverval(this.playbackInterval);
   }
 
-  mediaPlay = (media) => {
-    console.log('EVENT: Play');
-    media.play();
-  };
+  setPositionInterval = () => {
+    return setInterval(() => {
+      const time = Media.currentTime(this.state.videoNode)
+      console.log(time);
+    }, 50);
+  }
 
-  mediaPause = (media) => {
-    console.log('EVENT: Pause');
-    media.pause();
-  };
+  clearPositionInverval = (inervalId) => {
+    clearInterval(this.playbackInterval);
+  }
 
   render() {
     return (
       <div>
-        <ButtonPlay 
+        <ButtonPlay
           onPlay={this.handlePlayClick}
           onPause={this.handlePauseClick}
         />
+        <ProgressBar position={20} />
       </div>
     );
   };
