@@ -1,34 +1,16 @@
 {
   "name": "vision",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Vadim Brodsky <vadim.brodsky@vidyard.com>",
-  "license": "MIT",
-  "scripts": {
-    "dev": "webpack-dev-server",
-    "bundle": "webpack",
-    "lint": "eslint -c .eslintrc.js ."
-  },
-  "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "css-loader": "^0.28.1",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
-    "style-loader": "^0.17.0",
-    "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.5"
-  },
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-hot-loader": "next"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
