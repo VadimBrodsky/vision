@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './app.css';
+import styles from './App.css';
 
-import Player from './player';
-import Controls from './controls';
+import Player from './components/player';
+import Controls from './components/controls';
 
 const settings = {
   id: 'video1',
