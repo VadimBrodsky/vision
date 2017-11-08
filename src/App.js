@@ -27,7 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <div className={styles.app}>
-        <h2>Hello, World</h2>
+        <h2>Vision Player</h2>
         <Player
           source={settings.source}
           id={settings.id}
