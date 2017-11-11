@@ -9,8 +9,19 @@ const settings = {
   source: 'sample.mp4',
 };
 
+/*
+ * The media events that react supports:
+ * ====================================
+ * onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted
+ * onEnded onError onLoadedData onLoadedMetadata onLoadStart onPause onPlay
+ * onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend
+ * onTimeUpdate onVolumeChange onWaiting
+*/
+
 class App extends React.Component {
-  state = {};
+  state = {
+    position: 0,
+  };
 
   handleMetadata = e => {
     this.setState({

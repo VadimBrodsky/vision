@@ -4,13 +4,17 @@ import ProgressBar from './progress_bar';
 import * as Media from '../helpers/media_api';
 
 class Controls extends React.Component {
+  state = {};
+
   handlePlayClick = () => {
     Media.play(this.state.videoNode);
+    this.setState({ playing: true });
     // this.playbackInterval = this.setPositionInterval();
   };
 
   handlePauseClick = () => {
     Media.pause(this.state.videoNode);
+    this.setState({ playing: false });
     // this.clearPositionInverval(this.playbackInterval);
   }
 
@@ -34,16 +38,16 @@ class Controls extends React.Component {
     const el = document.getElementById(this.props.playerId);
     this.setState({
       videoNode: el,
+      playing: false,
     });
   };
 
   render() {
+    const playButton = <ButtonPlay onClick={this.handlePlayClick} playing={false} />;
+    const pauseButton = <ButtonPlay onClick={this.handlePauseClick} playing={true} />;
     return (
       <div>
-        <ButtonPlay
-          onPlay={this.handlePlayClick}
-          onPause={this.handlePauseClick}
-        />
+        { this.state.playing ? pauseButton : playButton }
         <ProgressBar
           onChange={this.handleSeek}
           duration={this.props.duration}
