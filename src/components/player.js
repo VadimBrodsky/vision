@@ -1,15 +1,15 @@
 import React from 'react';
 import Media from './media';
 
-const Player = (props) => {
+const Player = ({ id, onMetadata, onTime, source }) => {
   return (
     <video
       width="480"
-      id={props.id}
-      onLoadedMetadata={props.onMetadata}
-      onTimeUpdate={props.onTime}
+      id={id}
+      onLoadedMetadata={onMetadata}
+      onTimeUpdate={onTime}
     >
-      <Media source={props.source} />
+      <Media source={source} />
     </video>
   );
 }

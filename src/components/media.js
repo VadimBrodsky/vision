@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Media = (props) => {
+const Media = ({ source }) => {
   return (
-    <source src={props.source} type="video/mp4" />
+    <source src={source} type="video/mp4" />
   );
 }
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './progress_bar.css';
 
-const ProgressBar = (props) => {
+const ProgressBar = ({ duration, position, onChange }) => {
   return (
     <input
       type="range"
       min="0"
-      max={props.duration}
+      max={duration}
       step="1"
-      value={props.position}
-      onChange={(e) => props.onChange(e.target.value)}
+      value={position}
+      onChange={(e) => onChange(e.target.value)}
       className={styles.progress_bar}
     />
   );

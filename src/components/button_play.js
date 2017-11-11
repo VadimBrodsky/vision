@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ButtonPlay = (props) => {
-  const label = props.playing ? 'Pause' : 'Play';
+const ButtonPlay = ({ playing, onClick }) => {
+  const label = playing ? 'Pause' : 'Play';
   return (
-    <button onClick={props.onClick}>
+    <button onClick={onClick}>
       {label}
     </button>
   );
