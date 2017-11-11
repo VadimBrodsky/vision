@@ -8,11 +8,13 @@ export const pause = (media) => {
   media.pause();
 };
 
-export const currentTime = (media, time) => {
-  if (time !== undefined) {
-    media.currentTime = time;
-  }
+export const currentTime = (media) => {
   return media.currentTime;
 };
+
+export const seek = (media, time) => {
+  console.log(`EVENT: Seek to ${time}`);
+  media.currentTime = time;
+}
 
 export const duration = media => media.duration;
