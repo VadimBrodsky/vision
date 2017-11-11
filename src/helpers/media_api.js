@@ -1,25 +1,20 @@
-const play = (media) => {
+export const play = (media) => {
   console.log('EVENT: Play');
   media.play();
 };
 
-const pause = (media) => {
+export const pause = (media) => {
   console.log('EVENT: Pause');
   media.pause();
 };
 
-const currentTime = (media, time) => {
-  if (time !== undefined) {
-    media.currentTime = time;
-  }
+export const currentTime = (media) => {
   return media.currentTime;
 };
 
-const duration = media => media.duration;
+export const seek = (media, time) => {
+  console.log(`EVENT: Seek to ${time}`);
+  media.currentTime = time;
+}
 
-export {
-  play,
-  pause,
-  currentTime,
-  duration,
-};
+export const duration = media => media.duration;
