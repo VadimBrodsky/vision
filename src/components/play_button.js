@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ButtonPlay = ({ playing, onClick }) => {
+const PlayButton = ({ playing, onClick }) => {
   const label = playing ? 'Pause' : 'Play';
   return (
     <button onClick={onClick}>
@@ -9,4 +9,4 @@ const ButtonPlay = ({ playing, onClick }) => {
   );
 }
 
-export default ButtonPlay;
+export default PlayButton;
