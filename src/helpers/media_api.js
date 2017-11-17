@@ -1,20 +1,28 @@
-export const play = (media) => {
-  console.log('EVENT: Play');
-  media.play();
-};
+export default class Media {
+  constructor(videoTag) {
+    this.media = videoTag;
+  }
 
-export const pause = (media) => {
-  console.log('EVENT: Pause');
-  media.pause();
-};
+  play() {
+    console.log('EVENT: Play');
+    this.media.play();
+  }
 
-export const currentTime = (media) => {
-  return media.currentTime;
-};
+  pause() {
+    console.log('EVENT: Pause');
+    this.media.pause();
+  }
 
-export const seek = (media, time) => {
-  console.log(`EVENT: Seek to ${time}`);
-  media.currentTime = time;
+  currentTime() {
+    return this.media.currentTime;
+  }
+
+  seek(time) {
+    console.log(`EVENT: Seek to ${time}`);
+    this.media.currentTime = time;
+  }
+
+  duration() {
+    return this.media.duration;
+  }
 }
-
-export const duration = media => media.duration;

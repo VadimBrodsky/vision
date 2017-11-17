@@ -1,20 +1,21 @@
 import React from 'react';
-import ButtonPlay from './button_play';
+import PlayButton from './play_button';
 import ProgressBar from './progress_bar';
 
-const Controls = ({
-  duration,
-  handlePlayClick,
-  handlePauseClick,
-  handleSeek,
-  playing,
-  position,
-}) => {
-  const playButton = <ButtonPlay onClick={handlePlayClick} playing={false} />;
-  const pauseButton = <ButtonPlay onClick={handlePauseClick} playing={true} />;
+const Controls = ({ duration, playing, position, mediaApi, liftState }) => {
+  const handlePlayButtonClick = () => {
+    playing ? mediaApi.pause() : mediaApi.play();
+    liftState({playing: !playing});
+  };
+
+  const handleSeek = (time) => {
+    mediaApi.seek(time);
+    liftState({ position: time });
+  }
+
   return (
     <div>
-      { playing ? pauseButton : playButton }
+      <PlayButton onClick={handlePlayButtonClick} playing={playing}/>
       <ProgressBar
         handleSeek={handleSeek}
         duration={duration}
