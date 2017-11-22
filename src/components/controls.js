@@ -1,6 +1,7 @@
 import React from 'react';
 import PlayButton from './play_button';
 import ProgressBar from './progress_bar';
+import TimeDisplay from './time-display';
 
 const Controls = ({ duration, playing, position, mediaApi, liftState }) => {
   const handlePlayButtonClick = () => {
@@ -20,6 +21,10 @@ const Controls = ({ duration, playing, position, mediaApi, liftState }) => {
         handleSeek={handleSeek}
         duration={duration}
         position={position}
+      />
+      <TimeDisplay
+        currentTime={position}
+        totalTime={duration}
       />
     </div>
   );

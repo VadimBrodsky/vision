@@ -13,8 +13,9 @@ const settings = {
 
 class App extends React.Component {
   state = {
-    position: 0,
+    duration: 0,
     playing: false,
+    position: 0,
   };
 
   liftState = (state) => {

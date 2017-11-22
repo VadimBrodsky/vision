@@ -15,7 +15,7 @@ const Player = ({ id, liftState, mediaApi, children, playing }) => {
   };
 
   const handleTimeUpdate = e => {
-    liftState({ position: e.target.currentTime });
+    liftState({ position: e.target.currentTime.toFixed() });
   };
 
   const handleClick = () => {
