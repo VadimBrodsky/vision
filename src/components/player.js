@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 /*
  * The media events that react supports:
@@ -9,31 +10,48 @@ import React from 'react';
  * onTimeUpdate onVolumeChange onWaiting
 */
 
-const Player = ({ id, liftState, mediaApi, children, playing }) => {
-  const handleMetadata = e => {
-    liftState({ duration: e.target.duration });
+class Player extends React.Component  {
+  // ({ id, liftState, mediaApi, children, playing }) =>
+  // const handleMetadata = (e) => {
+  //   liftState({ duration: e.target.duration });
+  // };
+
+  // const handleTimeUpdate = (e) => {
+  //   liftState({ position: e.target.currentTime.toFixed() });
+  // };
+
+  // const handleClick = () => {
+  //   playing ? mediaApi.pause() : mediaApi.play();
+  //   liftState({ playing: !playing });
+  // };
+  //
+        // onLoadedMetadata={handleMetadata}
+        // onTimeUpdate={handleTimeUpdate}
+        // onClick={handleClick}
+
+  setVideoRef = (el) => {
+    this.video = el;
   };
 
-  const handleTimeUpdate = e => {
-    liftState({ position: e.target.currentTime.toFixed() });
-  };
-
-  const handleClick = () => {
-    playing ? mediaApi.pause() : mediaApi.play();
-    liftState({playing: !playing});
+  componentDidUpdate(prevProps) {
+    this.props.playing ? this.video.play() : this.video.pause();
   }
 
-  return (
-    <video
-      width="480"
-      id={id}
-      onLoadedMetadata={handleMetadata}
-      onTimeUpdate={handleTimeUpdate}
-      onClick={handleClick}
-    >
-      {children}
-    </video>
-  );
-}
+  render() {
+    return (
+      <video
+        width="480"
+        id={this.props.id}
+        ref={this.setVideoRef}
+      >
+        {this.props.children}
+      </video>
+    );
+  }
+};
 
-export default Player;
+const mapStateToProps = (state) => ({
+  playing: state.media.playing,
+});
+
+export default connect(mapStateToProps)(Player);
