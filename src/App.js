@@ -37,7 +37,6 @@ class App extends React.Component {
           id={settings.id}
           mediaApi={this.state.mediaApi}
           liftState={this.liftState}
-          playing={this.state.playing}
         >
           <Source url={settings.source} />
         </Player>
@@ -45,7 +44,6 @@ class App extends React.Component {
         <Controls
           duration={this.state.duration}
           position={this.state.position}
-          playing={this.state.playing}
           mediaApi={this.state.mediaApi}
           liftState={this.liftState}
         />
