@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './progress_bar.css';
 
-const ProgressBar = ({ duration, position, handleSeek }) => {
+const Seekbar = ({ duration, position, handleSeek }) => {
   return (
     <input
       type="range"
@@ -15,4 +15,4 @@ const ProgressBar = ({ duration, position, handleSeek }) => {
   );
 }
 
-export default ProgressBar;
+export default Seekbar;

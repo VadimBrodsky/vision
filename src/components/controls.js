@@ -1,6 +1,12 @@
 import React from 'react';
+
 import PlayButton from './play_button';
-import ProgressBar from './progress_bar';
+import StopButton from './Stop-Button';
+import MuteButton from './Mute-Button';
+import FullscreenButton from './Fullscreen-Button';
+import VolumeSlider from './Volume-Slider';
+import SeekBar from './Seek-Bar';
+import ProgressBar from './Progress-Bar';
 import TimeDisplay from './time-display';
 
 import { connect } from 'react-redux';
@@ -17,11 +23,36 @@ const Controls = ({ duration, playing, position, mediaApi, liftState, pause, pla
   };
 
   return (
-    <div>
-      <PlayButton onClick={handlePlayButtonClick} playing={playing} />
-      <ProgressBar handleSeek={handleSeek} duration={duration} position={position} />
-      <TimeDisplay currentTime={position} totalTime={duration} />
-    </div>
+    <ul style={{
+      display: 'flex',
+      listStyle: 'none',
+      padding: 0,
+    }}>
+      <li>
+        <PlayButton onClick={handlePlayButtonClick} playing={playing} />{' '}
+      </li>
+      <li>
+        <StopButton />
+      </li>
+      <li>
+        <ProgressBar />
+        <SeekBar
+          handleSeek={handleSeek}
+          duration={duration}
+          position={position}
+        />
+        <TimeDisplay currentTime={position} totalTime={duration} />{' '}
+      </li>
+      <li>
+        <MuteButton />
+      </li>
+      <li>
+        <VolumeSlider />
+      </li>
+      <li>
+        <FullscreenButton />
+      </li>
+    </ul>
   );
 };
 
