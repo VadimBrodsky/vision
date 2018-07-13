@@ -2,13 +2,23 @@ const media = (state = {}, action) => {
   switch (action.type) {
     case 'PLAY':
       return {
-        // startTime: action.startTime,
+        ...state,
         playing: true,
-        // completed: false,
       };
     case 'PAUSE':
       return {
+        ...state,
         playing: false,
+      };
+    case 'DURATION':
+      return {
+        ...state,
+        duration: action.duration,
+      };
+    case 'CURRENT_TIME':
+      return {
+        ...state,
+        currentTime: action.time,
       };
     default:
       return state;

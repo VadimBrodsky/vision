@@ -1,21 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-/*
- * The media events that react supports:
- * ====================================
- * onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted
- * onEnded onError onLoadedData onLoadedMetadata onLoadStart onPause onPlay
- * onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend
- * onTimeUpdate onVolumeChange onWaiting
-*/
+import { duration, currentTime } from '../actions';
 
 class Player extends React.Component {
   // ({ id, liftState, mediaApi, children, playing }) =>
-  // const handleMetadata = (e) => {
-  //   liftState({ duration: e.target.duration });
-  // };
-
   // const handleTimeUpdate = (e) => {
   //   liftState({ position: e.target.currentTime.toFixed() });
   // };
@@ -79,14 +67,6 @@ class Player extends React.Component {
     return this.video.duration;
   }
 
-  loadMetadataHandler(data) {
-    console.log(data);
-  }
-
-  timeUpdateHandler(time) {
-    return this.video.currentTime;
-  }
-
   isFullScreen() {
     return !!(
       document.fullscreenEnabled ||
@@ -115,9 +95,46 @@ class Player extends React.Component {
     }
   }
 
+  loadMetadataHandler(data) {
+    console.log(data);
+  }
+
+  timeUpdateHandler(time) {
+    return this.video.currentTime;
+  }
+
   render() {
     return (
-      <video width="480" id={this.props.id} ref={this.setVideoRef}>
+      <video
+        width="480"
+        id={this.props.id}
+        ref={this.setVideoRef}
+        onAbort={() => {}}
+        onCanPlay={() => {}}
+        onCanPlayThrough={() => {}}
+        onDurationChange={() => {}}
+        onEmptied={() => {}}
+        onEncrypted={() => {}}
+        onEnded={() => {}}
+        onError={() => {}}
+        onLoadedData={() => {}}
+        onLoadedMetadata={this.props.handleMetadata}
+        onLoadStart={() => {}}
+        onPause={() => {}}
+        onPlay={(e) => {
+          console.log('onPlay ', e);
+        }}
+        onPlaying={() => {}}
+        onProgress={() => {}}
+        onRateChange={() => {}}
+        onSeeked={() => {}}
+        onSeeking={() => {}}
+        onStalled={() => {}}
+        onSuspend={() => {}}
+        onTimeUpdate={this.props.handleTimeUpdate}
+        onVolumeChange={() => {}}
+        onWaiting={() => {}}
+      >
         {this.props.children}
       </video>
     );
@@ -128,4 +145,16 @@ const mapStateToProps = (state) => ({
   playing: state.media.playing,
 });
 
-export default connect(mapStateToProps)(Player);
+const mapDispatchToProps = (dispatch) => ({
+  handleMetadata: ({ target: { duration: seconds } }) => {
+    dispatch(duration(seconds.toFixed()));
+  },
+  handleTimeUpdate: ({ target: { currentTime: time } }) => {
+    dispatch(currentTime(time.toFixed()));
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Player);
